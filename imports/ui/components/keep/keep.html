@@ -1,0 +1,38 @@
+<template name="keep">
+	<div class="userlogut">
+		<span class="username">rhoyos</span>
+		<span class="userlogut"><a class="link_logout" href="#">Logout</a> </span>
+	</div>
+	<div class="continer-keep">
+		<div class="new-kepp">
+			<form class="form-inline" name=formNewKeep method="post" enctype="text/plain">
+				<div class="row">
+					<div class="col-xs-9 col-md-8">
+						<div class="form-group form-keep"> 
+							<input 	id="textkeep" class="form-control-pr form-keep-control" name="textkeep" required="required" 
+									type="text" placeholder="Take a note"/>
+						</div>
+					</div>
+					<div class="col-xs-3 col-md-4">
+						<a class="form-save" type="submit" href="#">
+							<span class="glyphicon glyphicon-floppy-saved form-save-link"></span>
+						</a>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+		<div class="bodykeep">
+			<div class="keepcontent">
+				<div class="keeptitle">
+					<h3 class="keeptitle_item">
+						<span class="glyphicon glyphicon-trash"></span>
+					</h3>
+				</div>
+				<div class="keepcontent_body">
+					Vamos a probar como vamos con este tema las notas pueden ser mas grandes
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

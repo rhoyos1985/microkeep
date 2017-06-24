@@ -1,0 +1,36 @@
+<template name="signup">
+	
+	<div class="row">
+		<div class="col-xs-11 col-md-8 formContainer">
+			<form name="formRegister" method="post" enctype="multipart/form-data">
+				<h1 class="formRegister_title"> Sign up </h1>
+				<div class="form-group">
+					<label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+					<input 	id="usernamesignup" class="form-control" name="usernamesignup" 
+							required="required" type="text" placeholder="mysuperusername690" />
+				</div>
+				<div class="form-group"> 
+					<label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+					<input 	id="emailsignup" class="form-control" name="emailsignup" required="required" 
+							type="email" placeholder="mail@microkeepmail.com"/> 
+				</div>
+				<div class="form-group"> 
+					<label for="passsignup" class="youpasswd" data-icon="p">Your password </label>
+					<input 	id="passsignup" class="form-control" name="passsignup" required="required" 
+							type="password" placeholder="eg. X8df!90EO"/>
+				</div>
+				<div class="form-group"> 
+					<label for="passsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+					<input 	id="passsignup_confirm" class="form-control" name="passsignup_confirm" required="required" 
+							type="password" placeholder="eg. X8df!90EO"/>
+				</div>
+				<div class="form-group" > 
+					<input class="btn btn-primary" type="submit" value="Sign up"/> 
+				</div>
+				<div class="form-group" >  
+					Already a member ? <a href="/signin" class="to_register"> Go and log in </a>
+				</div>
+			</form> 
+		</div>	
+	</div>
+</template>
