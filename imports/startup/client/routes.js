@@ -31,10 +31,10 @@ FlowRouter.route('/signin', {
   },
 });
 
-FlowRouter.route('/keep', {
+FlowRouter.route('/keep/:userName', {
   name: 'App.keep',
-  action() {
-    BlazeLayout.render('App_body', { main: 'App_keep' });
+  action(params) {
+    BlazeLayout.render('App_body', { main: 'App_keep', params: params });
   },
 });
 

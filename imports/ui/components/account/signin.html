@@ -4,15 +4,17 @@
 		<div class="col-xs-11 col-md-8 formContainer">
 			<form class="signin_user" name="formRegister" method="post" enctype="multipart/form-data">
 				<h1 class="formRegister_title"> Sign in</h1> 
-				<div class="form-group"> 
+				<div class="form-group {{errorClass 'emailsigin'}}"> 
 					<label for="emailsigin" class="youmail" data-icon="e" > Your email</label>
-					<input 	id="emailsigin" class="form-control" name="emailsigin" required="required" 
+					<input 	id="emailsigin" class="form-control" name="emailsigin" 
 							type="email" placeholder="mail@microkeepmail.com"/> 
+					<span class="help-block">{{errorMessage 'emailsigin'}}</span>
 				</div>
-				<div class="form-group"> 
+				<div class="form-group {{errorClass 'passsignin'}}"> 
 					<label for="passsignin" class="youpasswd" data-icon="p">Your password </label>
-					<input 	id="passsignin" class="form-control" name="passsignin" required="required" 
+					<input 	id="passsignin" class="form-control" name="passsignin"
 							type="password" placeholder="eg. X8df!90EO"/>
+					<span class="help-block">{{errorMessage 'passsignin'}}</span>
 				</div>
 				<div class="form-group" > 
 					<input class="btn btn-primary" type="submit" value="Sign in"/> 
