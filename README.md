@@ -5,7 +5,7 @@ Test
 git clone git@github.com:rhoyos1985/microkeep.git
 
 # Instalation
-cd microkeep
+cd microkeep\n
 meteor npm install
 
 # Run 
