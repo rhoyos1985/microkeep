@@ -13,7 +13,7 @@ import '../../ui/pages/keephome/keep-home.js';
 FlowRouter.route('/', {
   name: 'App.home',
   action() {
-    BlazeLayout.render('App_body', { main: 'App_home' });
+   FlowRouter.go('App.signin');
   },
 });
 

@@ -23,7 +23,16 @@ const validation = {
 			errors.passsignin = "Password is requiered";  
 
 		return errors;
-	}
+	},
+
+	validateKeep: function (params) {  
+		var errors = {}; 
+
+		if (!params.textkeep)    
+			errors.textkeep =  "Keep is required";
+
+		return errors;
+	},
 }
 
 export default validation;

@@ -4,25 +4,21 @@ import SimpleSchema from 'simpl-schema';
 
 class KeepsCollection extends Mongo.Collection {
   	insert(doc, callback) {
-  		const ourDoc = {
-  			userId: doc.userId,
-  			description: doc.text,
-  		};
+  		const ourDoc = doc
   		const result = super.insert(ourDoc, callback);
   		return result;
   	}
-  	update(selector, modifier, options, callback) {
-  		const result = super.update(selector, modifier);
-  		return result;
+  	update(selector, modifier) {
+  	    const result = super.update(selector, modifier);
+  	    return result;
   	}
   	remove(selector, callback) {
-  		const categorie = this.find(selector).fetch();
-  		const result = super.remove(categorie);
+  		const result = super.remove(selector);
   		return result;
   	}
 }
 
-export const Keeps = new CategoriesCollection('Keeps');
+export const Keeps = new KeepsCollection('Keeps');
 
 // Deny all client-side updates since we will be using methods to manage this collection
 Keeps.deny({
@@ -43,30 +39,36 @@ Keeps.schema = new SimpleSchema({
 	priority:{
 		type: Number,
 		min: 1,
-		default:1,	
+		defaultValue:1,	
 	},
 	createAt: {
 		type: Date,
-		autoValue: () => {
-			if (this.isInsert) {
-				return new Date();
-			} else if (this.isUpsert) {
-				return {$setOnInsert: new Date()};
-			} 
-		},
-		denyUpdate: true,
-		optional: true,
+		autoValue: function() {
+      		if (this.isInsert) {
+        		return new Date();
+      		} else if (this.isUpsert) {
+        		return {$setOnInsert: new Date()};
+      		} else {
+        		this.unset();  // Prevent user from supplying their own value
+      		}
+    	},	
 	},
-	updateAt: {
-		type: Date,
-		autoValue: () => {
-			if (this.isUpdate) {
-				return new Date();
-			} 
-		},
-		denyInsert: true,
-		optional: true,	
-	},
+	updatedAt: {
+    	type: Date,
+    	autoValue: function() {
+    		if (this.isUpdate) {
+        		return new Date();
+      		}
+    	},
+    	denyInsert: true,
+    	optional: true
+  	},
 });
 
 Keeps.attachSchema(Keeps.schema);
+
+Keeps.publicFields = {
+  keep: 1,
+  priority: 1,
+  createAt: 1,
+};

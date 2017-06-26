@@ -4,35 +4,119 @@
 		<span class="userlogut"><a class="link_logout" href="#">Logout</a> </span>
 	</div>
 	<div class="continer-keep">
-		<div class="new-kepp">
-			<form class="form-inline" name=formNewKeep method="post" enctype="text/plain">
-				<div class="row">
-					<div class="col-xs-9 col-md-8">
-						<div class="form-group form-keep"> 
-							<input 	id="textkeep" class="form-control-pr form-keep-control" name="textkeep" required="required" 
-									type="text" placeholder="Take a note"/>
-						</div>
-					</div>
-					<div class="col-xs-3 col-md-4">
-						<a class="form-save" type="submit" href="#">
-							<span class="glyphicon glyphicon-floppy-saved form-save-link"></span>
-						</a>
-					</div>
-					
-				</div>
-			</form>
+		{{#if errors}}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+		  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  		<span aria-hidden="true">&times;</span>
+		  	</button>
+		  	<strong>Warning!</strong> Better check yourself, you're not looking too good.
+		</div>
+		{{/if}}
+		<div class="panel new-kepp">
+			<form class="form-inline form_submit_keep" name=formNewKeep method="post" enctype="text/plain">
+		  		<div class="panel-body">
+		  			<div class="row">
+		  				<div class="col-xs-12 col-md-8">
+		  					<div class="form-group form-keep"> 
+		  						<textarea 	id="textkeep" class="form-control-pr form-keep-control" 
+		  									name="textkeep" type="text" 
+		  									placeholder="Take a note"></textarea>
+		  				</div>
+		  			</div>
+		  		</div>
+		  		</div>
+			  	<div class="panel-footer">
+			  		<div class="row">
+			  			<div class="col-xs-8">
+			  				<label for="keeppriority" class="lblPriority" data-icon="p">Priority </label>
+			  				<input id="keeppriority" name="keeppriority" type="number" min="1" max="10" value="1" class="form-control bfh-number">
+			  			</div>
+			  			<div class="col-xs-3 col-md-4">
+			  				<input class="btn btn-primary" type="submit" value="Save"/>
+			  			</div>
+			  		</div>
+			  	</div>
+		  </form>
 		</div>
 		<div class="bodykeep">
-			<div class="keepcontent">
-				<div class="keeptitle">
-					<h3 class="keeptitle_item">
-						<span class="glyphicon glyphicon-trash"></span>
-					</h3>
+			<div class="row row-pr">
+				<div class="col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<input id="orderDate" type="checkbox" checked="{{checked}}" class="toggle-checked" />
+							<label for="orderDate" class="lblOrderDate">Order by date</label>
+						</span>
+					</div><!-- /input-group -->
 				</div>
-				<div class="keepcontent_body">
-					Vamos a probar como vamos con este tema las notas pueden ser mas grandes
+				<div class="col-xs-6">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<input id="orderPriority" type="checkbox" checked="{{checkedPrio}}" class="toggle-checked_priority" />
+							<label for="orderPriority" class="lblOrderDate">Order by priority</label>
+						</span>
+					</div><!-- /input-group -->
 				</div>
+			</div>
+			<div class="row">
+				{{#each keepsuser}}
+				<div class="col-xs-12 col-md-3 keep-col">
+		  			<div class="keepcontent">
+						<div class="keeptitle">
+							<a role="button" href="#" class="keeptitle_item">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</div>
+						<div class="keepcontent_body keep_link" data-toggle="modal" data-target="#myModal">
+							{{ keep }}
+						</div>
+					</div>	
+				</div>
+				{{/each}}
 			</div>
 		</div>
 	</div>
+
+	{{#if updateKeep}}
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content modal-pr">
+				<div class="modal-header ">
+					<button type="button" class="close" data-dismiss="modal" 
+							aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Update</h4>
+				</div>
+				<form 	class="form-inline form_submit_keepUpdate" name=formNewKeep 
+						method="post" enctype="text/plain">
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-xs-12 col-md-8">
+								<div class="form-group form-keep"> 
+									<textarea 	id="textkeepUpdate" class="form-control-pr form-keep-control" 
+												name="textkeepUpdate" type="text" 
+												placeholder="Take a note">{{ updateKeep.keep }}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="row">
+							<div class="col-xs-9 col-md-8">
+								<label for="keeppriorityUpdate" class="lblPriority" data-icon="p">Priority </label>
+								<input 	id="keeppriorityUpdate" name="keeppriorityUpdate" 
+										type="number" min="1" max="10" value="{{ updateKeep.priority }}" 
+										class="form-control bfh-number" />
+							</div>
+							<div class="col-xs-3 col-md-4">
+								<input class="btn btn-primary" type="submit" value="Update" />
+							</div>
+						</div>
+					</div>	
+				</form>
+			</div>
+		</div>
+	</div>
+	{{/if}}
 </template>

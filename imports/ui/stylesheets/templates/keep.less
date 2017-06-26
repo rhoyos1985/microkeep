@@ -15,6 +15,7 @@
 	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	border-radius: 0px;
 
 	.form-keep{
 		margin-bottom: 0px;
@@ -22,7 +23,8 @@
 		.form-keep-control{
 			border: 0px solid @primary-color-white;
 			border-radius: 0px;
-			height: 45px;
+			width: 100%;
+			height: 60px;
 		}
 	}
 
@@ -36,12 +38,25 @@
 			padding: 10px;
 		}
 	}	
+	
+	.lblPriority{
+		float: left;
+		margin-right: 20px;
+		margin-top: 5px;
+	}
+
+	.bfh-number{
+		width: 60px;
+	}
 }
 
 .bodykeep{
 	margin-top: 10px;
 	padding-top: 10px;
-
+	
+	.keep-col{
+		margin-bottom: 20px;
+	}
 	.keepcontent{
 		background: @color-primary;
 		color: @primary-color-white;
@@ -53,10 +68,37 @@
 		.keeptitle{
 			.keeptitle_item{
 				color: @primary-color-white;
+				display: block;
 				font-size: 1em;
 				margin: 0px;
 				text-align: right;
 			}
 		}
 	}
+}
+
+.lblPriority{
+	float: left;
+	margin-right: 20px;
+	margin-top: 5px;
+}
+
+.bfh-number{
+	width: 60px;
+}
+
+.form-keep-control{
+	border: 0px solid @primary-color-white;
+	border-radius: 0px;
+	width: 100%;
+	height: 60px;
+}
+
+.modal-pr{
+	border-radius: 0px;
+	top:100px;
+}
+
+.row-pr{
+	margin-bottom: 10px;
 }
